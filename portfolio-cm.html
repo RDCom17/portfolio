@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Daphné Rolland — Community Manager | Région PACA</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,700&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --pink:       #ffb0d4;
+    --pink-dark:  #e8709f;
+    --pink-light: #fff0f7;
+    --navy:       #052044;
+    --navy-mid:   #0a3a6e;
+    --navy-light: #e8eef5;
+    --sage:       #80956d;
+    --sage-light: #eef2ea;
+    --sage-dark:  #5a6e4c;
+    --cream:      #fffdee;
+    --text:       #1a1a18;
+    --muted:      #7a7a72;
+    --font-serif: 'Playfair Display', serif;
+    --font-body:  'DM Sans', sans-serif;
+  }
+
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font-body); background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+  /* ── NAV ── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 1.1rem 3rem;
+    background: rgba(255,253,238,0.93); backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(5,32,68,0.08);
+  }
+  .nav-logo {
+    font-family: var(--font-serif); font-size: 1.15rem; font-weight: 700;
+    color: var(--navy); text-decoration: none; letter-spacing: 0.01em;
+  }
+  .nav-logo span { color: var(--pink-dark); }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a {
+    font-size: 0.88rem; font-weight: 500; color: var(--navy);
+    text-decoration: none; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--pink-dark); }
+  .nav-cta {
+    background: var(--navy) !important; color: var(--cream) !important;
+    padding: 0.5rem 1.3rem; border-radius: 100px;
+    transition: background 0.2s !important;
+  }
+  .nav-cta:hover { background: var(--pink-dark) !important; }
+
+  /* ── HERO ── */
+  #hero {
+    min-height: 100vh;
+    display: grid; grid-template-columns: 1.1fr 0.9fr;
+    align-items: center; padding: 8rem 3rem 4rem; gap: 4rem;
+    position: relative; overflow: hidden;
+    background: var(--cream);
+  }
+  .hero-deco {
+    position: absolute; border-radius: 50%;
+    pointer-events: none; opacity: 0.18;
+  }
+  .deco1 { width: 520px; height: 520px; background: var(--pink); top: -120px; right: -80px; }
+  .deco2 { width: 320px; height: 320px; background: var(--sage);  bottom: -80px; left: 10%; }
+  .deco3 { width: 180px; height: 180px; background: var(--navy);  top: 35%; left: -60px; }
+
+  .hero-tag {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--pink-light); color: var(--pink-dark);
+    font-size: 0.78rem; font-weight: 500;
+    padding: 0.4rem 1rem; border-radius: 100px; margin-bottom: 1.5rem;
+    letter-spacing: 0.04em; border: 1px solid rgba(232,112,159,0.25);
+  }
+  .hero-tag::before {
+    content: ''; width: 6px; height: 6px;
+    background: var(--pink-dark); border-radius: 50%;
+    animation: pulse 1.8s infinite;
+  }
+  @keyframes pulse {
+    0%,100% { opacity:1; transform:scale(1); }
+    50%      { opacity:0.4; transform:scale(1.5); }
+  }
+
+  .hero-title {
+    font-family: var(--font-serif); font-weight: 900;
+    font-size: clamp(2.6rem, 4.5vw, 3.8rem);
+    line-height: 1.08; color: var(--navy); margin-bottom: 1.4rem;
+  }
+  .hero-title em { font-style: italic; color: var(--pink-dark); }
+
+  .hero-sub {
+    font-size: 1.05rem; font-weight: 300; color: #555;
+    line-height: 1.75; max-width: 490px; margin-bottom: 2.2rem;
+  }
+
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--navy); color: var(--cream);
+    font-family: var(--font-body); font-size: 0.92rem; font-weight: 500;
+    padding: 0.8rem 1.9rem; border-radius: 100px; text-decoration: none;
+    transition: transform 0.2s, background 0.2s;
+  }
+  .btn-primary:hover { background: var(--pink-dark); transform: translateY(-2px); }
+  .btn-outline {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: transparent; color: var(--navy);
+    font-family: var(--font-body); font-size: 0.92rem; font-weight: 500;
+    padding: 0.8rem 1.9rem; border-radius: 100px; text-decoration: none;
+    border: 1.5px solid rgba(5,32,68,0.2); transition: border-color 0.2s, background 0.2s;
+  }
+  .btn-outline:hover { border-color: var(--navy); background: var(--navy-light); }
+
+  /* HERO RIGHT */
+  .hero-visual { position: relative; z-index: 2; display: flex; justify-content: center; }
+
+  .hero-card {
+    background: white; border-radius: 28px;
+    box-shadow: 0 24px 64px rgba(5,32,68,0.12);
+    padding: 2rem; width: 100%; max-width: 380px;
+  }
+  .hero-card-head {
+    display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem;
+  }
+  .avatar {
+    width: 52px; height: 52px; border-radius: 50%;
+    background: var(--pink-light);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-serif); font-weight: 700; font-size: 1.1rem;
+    color: var(--pink-dark); flex-shrink: 0;
+  }
+  .hero-card-head div p:first-child {
+    font-family: var(--font-serif); font-weight: 700; font-size: 1rem; color: var(--navy);
+  }
+  .hero-card-head div p:last-child { font-size: 0.8rem; color: var(--muted); margin-top: 0.1rem; }
+
+  .pill-row { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.4rem; }
+  .pill {
+    font-size: 0.75rem; font-weight: 500; padding: 0.35rem 0.9rem;
+    border-radius: 100px;
+  }
+  .pill-pink  { background: var(--pink-light);  color: var(--pink-dark); }
+  .pill-navy  { background: var(--navy-light);  color: var(--navy); }
+  .pill-sage  { background: var(--sage-light);  color: var(--sage-dark); }
+
+  .values-list { display: flex; flex-direction: column; gap: 0.6rem; }
+  .val-item {
+    display: flex; align-items: center; gap: 0.7rem;
+    font-size: 0.85rem; font-weight: 400; color: #444;
+  }
+  .val-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  .float-bubble {
+    position: absolute; background: white; border-radius: 14px;
+    padding: 0.6rem 1rem; font-size: 0.78rem; font-weight: 500;
+    box-shadow: 0 8px 24px rgba(5,32,68,0.1);
+    display: flex; align-items: center; gap: 0.5rem;
+    animation: floatY 3s ease-in-out infinite;
+    white-space: nowrap;
+  }
+  .fb1 { top: -18px; right: -10px; animation-delay: 0s; }
+  .fb2 { bottom: 10px; left: -20px; animation-delay: 1.5s; }
+  @keyframes floatY {
+    0%,100% { transform: translateY(0); }
+    50%      { transform: translateY(-8px); }
+  }
+
+  /* ── SECTIONS COMMUNES ── */
+  section { padding: 6rem 3rem; }
+  .section-label {
+    font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; margin-bottom: 0.7rem;
+  }
+  .section-title {
+    font-family: var(--font-serif); font-weight: 900;
+    font-size: clamp(1.8rem, 3vw, 2.6rem); line-height: 1.15; margin-bottom: 1rem;
+  }
+  .section-sub {
+    font-size: 1rem; font-weight: 300; color: #555;
+    line-height: 1.75; max-width: 520px;
+  }
+
+  /* ── VALEURS ── */
+  #valeurs { background: var(--navy); }
+  #valeurs .section-label { color: var(--pink); }
+  #valeurs .section-title { color: white; }
+  #valeurs .section-sub   { color: rgba(255,255,255,0.5); }
+
+  .values-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+    gap: 1.2rem; margin-top: 3rem;
+  }
+  .value-card {
+    background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px; padding: 1.8rem;
+    transition: transform 0.25s, background 0.25s;
+  }
+  .value-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.09); }
+  .value-card .ico {
+    font-size: 2rem; margin-bottom: 1rem; display: block;
+  }
+  .value-card h3 {
+    font-family: var(--font-serif); font-size: 1rem; font-weight: 700;
+    color: white; margin-bottom: 0.5rem;
+  }
+  .value-card p { font-size: 0.85rem; font-weight: 300; color: rgba(255,255,255,0.5); line-height: 1.6; }
+
+  /* ── TARIFS ── */
+  #tarifs { background: var(--cream); }
+  #tarifs .section-label { color: var(--sage-dark); }
+  #tarifs .section-title { color: var(--navy); }
+
+  .pricing-wrap {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem; margin-top: 3rem; max-width: 960px;
+  }
+  .p-card {
+    border-radius: 24px; padding: 2rem;
+    border: 1.5px solid rgba(5,32,68,0.1);
+    background: white; position: relative;
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .p-card:hover { transform: translateY(-5px); box-shadow: 0 20px 50px rgba(5,32,68,0.1); }
+  .p-card.star { background: var(--navy); border-color: var(--navy); }
+
+  .p-badge {
+    position: absolute; top: -12px; left: 50%; transform: translateX(-50%);
+    background: var(--pink-dark); color: white; font-size: 0.7rem; font-weight: 600;
+    padding: 0.28rem 1rem; border-radius: 100px; letter-spacing: 0.06em; white-space: nowrap;
+  }
+  .p-name {
+    font-family: var(--font-serif); font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 0.2rem;
+    color: var(--navy);
+  }
+  .p-card.star .p-name { color: var(--pink); }
+  .p-desc { font-size: 0.8rem; font-weight: 300; color: var(--muted); margin-bottom: 1.2rem; line-height: 1.5; }
+  .p-card.star .p-desc { color: rgba(255,255,255,0.45); }
+
+  .p-price { margin-bottom: 1.5rem; }
+  .p-price .amt {
+    font-family: var(--font-serif); font-size: 3rem; font-weight: 900; color: var(--navy); line-height: 1;
+  }
+  .p-card.star .p-price .amt { color: white; }
+  .p-price .cur { font-size: 1.3rem; font-weight: 700; vertical-align: top; margin-top: 0.4rem; display: inline-block; color: var(--navy); }
+  .p-card.star .p-price .cur { color: rgba(255,255,255,0.7); }
+  .p-price .per { font-size: 0.82rem; color: var(--muted); font-weight: 300; margin-top: 0.1rem; }
+  .p-card.star .p-price .per { color: rgba(255,255,255,0.4); }
+
+  .p-features { list-style: none; margin-bottom: 1.8rem; }
+  .p-features li {
+    display: flex; align-items: flex-start; gap: 0.7rem;
+    font-size: 0.85rem; font-weight: 300; color: #444;
+    padding: 0.42rem 0; border-bottom: 1px solid rgba(0,0,0,0.05);
+    line-height: 1.4;
+  }
+  .p-card.star .p-features li { color: rgba(255,255,255,0.7); border-bottom-color: rgba(255,255,255,0.07); }
+  .chk {
+    width: 18px; height: 18px; border-radius: 50%; flex-shrink: 0; margin-top: 1px;
+    background: var(--sage-light); color: var(--sage-dark);
+    display: flex; align-items: center; justify-content: center; font-size: 0.6rem; font-weight: 700;
+  }
+  .p-card.star .chk { background: rgba(255,255,255,0.12); color: white; }
+
+  .p-note { font-size: 0.72rem; color: var(--muted); font-style: italic; margin-bottom: 1.5rem; }
+  .p-card.star .p-note { color: rgba(255,255,255,0.35); }
+
+  .btn-book {
+    display: flex; align-items: center; justify-content: center;
+    width: 100%; padding: 0.8rem; border-radius: 100px; font-family: var(--font-body);
+    font-size: 0.88rem; font-weight: 500; text-decoration: none; transition: all 0.2s;
+  }
+  .btn-book-navy { background: var(--navy); color: var(--cream); }
+  .btn-book-navy:hover { background: var(--pink-dark); }
+  .btn-book-white { background: rgba(255,255,255,0.12); color: white; border: 1.5px solid rgba(255,255,255,0.2); }
+  .btn-book-white:hover { background: rgba(255,255,255,0.2); }
+
+  /* EXTRAS */
+  .extras-box {
+    margin-top: 3rem; background: white; border-radius: 20px;
+    border: 1.5px solid rgba(5,32,68,0.08); padding: 2rem; max-width: 680px;
+  }
+  .extras-title {
+    font-family: var(--font-serif); font-size: 1rem; font-weight: 700;
+    color: var(--navy); margin-bottom: 1.2rem; display: flex; align-items: center; gap: 0.6rem;
+  }
+  .extras-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem 1.5rem; }
+  .extra-item {
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 0.83rem; color: #555; font-weight: 300;
+    padding: 0.4rem 0; border-bottom: 1px dashed rgba(0,0,0,0.07);
+  }
+  .extra-item strong { font-weight: 600; color: var(--navy); white-space: nowrap; margin-left: 0.5rem; }
+
+  /* ── POURQUOI ── */
+  #pourquoi { background: var(--pink-light); }
+  #pourquoi .section-label { color: var(--pink-dark); }
+  #pourquoi .section-title { color: var(--navy); }
+
+  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 3rem; }
+  .why-text p { font-size: 1rem; font-weight: 300; color: #444; line-height: 1.8; margin-bottom: 1.5rem; }
+  .why-text p strong { font-weight: 600; color: var(--navy); }
+  .why-cards { display: flex; flex-direction: column; gap: 1rem; }
+  .why-card {
+    background: white; border-radius: 16px; padding: 1.2rem 1.5rem;
+    display: flex; align-items: center; gap: 1rem;
+    box-shadow: 0 4px 16px rgba(5,32,68,0.06);
+    transition: transform 0.2s;
+  }
+  .why-card:hover { transform: translateX(6px); }
+  .why-ico {
+    width: 44px; height: 44px; border-radius: 12px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 1.3rem;
+  }
+  .why-card h4 { font-family: var(--font-serif); font-size: 0.95rem; font-weight: 700; color: var(--navy); margin-bottom: 0.2rem; }
+  .why-card p  { font-size: 0.8rem; font-weight: 300; color: var(--muted); line-height: 1.5; }
+
+  /* ── CONTACT ── */
+  #contact { background: var(--navy); text-align: center; }
+  #contact .section-label { color: var(--pink); }
+  #contact .section-title { color: white; }
+  .contact-sub { font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.55); max-width: 480px; margin: 0 auto 2.5rem; line-height: 1.75; }
+  .contact-info { display: flex; flex-direction: column; gap: 0.7rem; align-items: center; margin-top: 2rem; }
+  .c-link {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    color: rgba(255,255,255,0.75); font-size: 0.95rem; font-weight: 300;
+    text-decoration: none; transition: color 0.2s;
+  }
+  .c-link:hover { color: var(--pink); }
+  .c-link span { font-size: 1.1rem; }
+  .btn-contact {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--pink-dark); color: white; font-family: var(--font-body);
+    font-size: 0.95rem; font-weight: 500; padding: 0.85rem 2.2rem; border-radius: 100px;
+    text-decoration: none; margin-top: 2rem; transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .btn-contact:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(232,112,159,0.4); }
+
+  footer {
+    background: #020e1f; color: rgba(255,255,255,0.3);
+    text-align: center; padding: 1.4rem 3rem; font-size: 0.8rem; font-weight: 300;
+  }
+  footer strong { color: rgba(255,255,255,0.6); font-weight: 500; }
+
+  /* ANIMS */
+  .fade-up { opacity: 0; transform: translateY(28px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .fade-up.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    #hero { grid-template-columns: 1fr; padding: 7rem 1.5rem 3rem; gap: 2.5rem; }
+    .hero-visual { display: none; }
+    section { padding: 4rem 1.5rem; }
+    .pricing-wrap { grid-template-columns: 1fr; }
+    .why-grid { grid-template-columns: 1fr; }
+    .extras-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#hero" class="nav-logo">Daphné <span>Rolland</span></a>
+  <ul class="nav-links">
+    <li><a href="#valeurs">Approche</a></li>
+    <li><a href="#tarifs">Tarifs</a></li>
+    <li><a href="#pourquoi">Pourquoi moi ?</a></li>
+    <li><a href="#contact" class="nav-cta">Me contacter</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-deco deco1"></div>
+  <div class="hero-deco deco2"></div>
+  <div class="hero-deco deco3"></div>
+
+  <div style="position:relative;z-index:2">
+    <div class="hero-tag">Disponible · Région PACA</div>
+    <h1 class="hero-title">
+      Concentrez-vous<br>
+      sur votre métier,<br>
+      je m'occupe de votre<br>
+      <em>visibilité.</em>
+    </h1>
+    <p class="hero-sub">Entre la gestion de votre activité et vos obligations quotidiennes, la communication passe souvent au second plan. Pourtant, votre savoir-faire mérite d'être mis en lumière !</p>
+    <div class="hero-btns">
+      <a href="#tarifs" class="btn-primary">Voir les formules →</a>
+      <a href="#contact" class="btn-outline">Prendre contact</a>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="float-bubble fb1">📈 Votre audience, en croissance</div>
+    <div class="hero-card">
+      <div class="hero-card-head">
+        <div class="avatar">DR</div>
+        <div>
+          <p>Daphné Rolland</p>
+          <p>Community Manager · PACA</p>
+        </div>
+      </div>
+      <div class="pill-row">
+        <span class="pill pill-pink">Instagram</span>
+        <span class="pill pill-navy">LinkedIn</span>
+        <span class="pill pill-sage">Facebook</span>
+        <span class="pill pill-pink">TikTok</span>
+        <span class="pill pill-sage">Reels & Stories</span>
+      </div>
+      <div class="values-list">
+        <div class="val-item"><span class="val-dot" style="background:var(--pink-dark)"></span>Approche humaine et personnalisée</div>
+        <div class="val-item"><span class="val-dot" style="background:var(--sage)"></span>Contenus authentiques</div>
+        <div class="val-item"><span class="val-dot" style="background:var(--navy)"></span>Accompagnement sur mesure</div>
+        <div class="val-item"><span class="val-dot" style="background:var(--pink-dark)"></span>Déplacements sur site</div>
+      </div>
+    </div>
+    <div class="float-bubble fb2">✨ Contenu authentique &amp; engageant</div>
+  </div>
+</section>
+
+<!-- VALEURS -->
+<section id="valeurs" class="fade-up">
+  <div class="section-label" style="color:var(--pink)">Mon approche</div>
+  <h2 class="section-title" style="color:white">Une communication qui<br>vous ressemble.</h2>
+  <p class="section-sub" style="color:rgba(255,255,255,0.5)">Mon objectif : valoriser votre activité sur les réseaux sociaux et les supports de communication.</p>
+  <div class="values-grid">
+    <div class="value-card">
+      <span class="ico">🤝</span>
+      <h3>Approche humaine</h3>
+      <p>Je prends le temps de comprendre votre activité, vos valeurs et vos clients pour créer un contenu qui vous correspond vraiment.</p>
+    </div>
+    <div class="value-card">
+      <span class="ico">📍</span>
+      <h3>Déplacements sur site</h3>
+      <p>Je me déplace chez vous pour capturer l'authenticité de votre quotidien et produire du contenu vivant, ancré dans votre réalité.</p>
+    </div>
+    <div class="value-card">
+      <span class="ico">✨</span>
+      <h3>Contenus authentiques</h3>
+      <p>Fini les posts génériques. Je crée un contenu sincère qui reflète votre personnalité et crée une vraie connexion avec votre audience.</p>
+    </div>
+    <div class="value-card">
+      <span class="ico">🎯</span>
+      <h3>Accompagnement sur mesure</h3>
+      <p>Chaque entreprise est unique. Votre stratégie de communication l'est aussi — adaptée à vos objectifs, votre secteur et votre budget.</p>
+    </div>
+  </div>
+</section>
+
+<!-- TARIFS -->
+<section id="tarifs" class="fade-up">
+  <div class="section-label">Au menu</div>
+  <h2 class="section-title">Mes formules</h2>
+  <p class="section-sub">Des offres transparentes pour une communication régulière et efficace. Sans mauvaise surprise.</p>
+
+  <div class="pricing-wrap">
+
+    <!-- ESSENTIELLE -->
+    <div class="p-card">
+      <div class="p-name">Formule Essentielle</div>
+      <div class="p-desc">L'essentiel pour une présence professionnelle et régulière</div>
+      <div class="p-price">
+        <span class="cur">€</span><span class="amt">350</span>
+        <div class="per">/ mois</div>
+      </div>
+      <ul class="p-features">
+        <li><span class="chk">✓</span>4 publications/mois sur 2 plateformes au choix</li>
+        <li><span class="chk">✓</span>Création des visuels et rédaction des textes</li>
+        <li><span class="chk">✓</span>Publication et programmation</li>
+        <li><span class="chk">✓</span>Veille de votre présence en ligne</li>
+      </ul>
+      <p class="p-note">* À partir de vos contenus uniquement</p>
+      <a href="#contact" class="btn-book btn-book-navy">Choisir cette formule</a>
+    </div>
+
+    <!-- CROISSANCE (star) -->
+    <div class="p-card star">
+      <div class="p-badge">⭐ La plus choisie</div>
+      <div class="p-name">Formule Croissance</div>
+      <div class="p-desc">Pour développer votre visibilité et attirer de nouveaux clients</div>
+      <div class="p-price">
+        <span class="cur">€</span><span class="amt">500</span>
+        <div class="per">/ mois</div>
+      </div>
+      <ul class="p-features">
+        <li><span class="chk">✓</span>4 publications/mois sur 2–3 plateformes</li>
+        <li><span class="chk">✓</span>2 Reels / mois</li>
+        <li><span class="chk">✓</span>Stories</li>
+        <li><span class="chk">✓</span>2 rédactions d'articles / mois</li>
+        <li><span class="chk">✓</span>Veille et gestion des interactions</li>
+      </ul>
+      <p class="p-note">* 1 déplacement sur site inclus</p>
+      <a href="#contact" class="btn-book btn-book-white">Choisir cette formule</a>
+    </div>
+
+    <!-- SIGNATURE -->
+    <div class="p-card">
+      <div class="p-name">Formule Signature</div>
+      <div class="p-desc">La communication de votre entreprise entièrement prise en charge</div>
+      <div class="p-price">
+        <span class="cur">€</span><span class="amt">950</span>
+        <div class="per">/ mois</div>
+      </div>
+      <ul class="p-features">
+        <li><span class="chk">✓</span>8 publications/mois sur 2–3 plateformes</li>
+        <li><span class="chk">✓</span>4 Reels / mois</li>
+        <li><span class="chk">✓</span>Stories</li>
+        <li><span class="chk">✓</span>4 rédactions d'articles / mois</li>
+        <li><span class="chk">✓</span>Gestion avancée de la communauté</li>
+        <li><span class="chk">✓</span>2 créations de supports de communication</li>
+      </ul>
+      <p class="p-note">* 2 déplacements sur site inclus</p>
+      <a href="#contact" class="btn-book btn-book-navy">Choisir cette formule</a>
+    </div>
+
+  </div>
+
+  <!-- EXTRAS -->
+  <div class="extras-box">
+    <div class="extras-title">✨ Les extras</div>
+    <div class="extras-grid">
+      <div class="extra-item">Contenu supp. (Reel, stories…)<strong>à partir de 25€</strong></div>
+      <div class="extra-item">Article de blog<strong>30€</strong></div>
+      <div class="extra-item">Support de communication<strong>40€</strong></div>
+      <div class="extra-item">Campagne e-mailing<strong>50€</strong></div>
+      <div class="extra-item">Demi-journée création sur site<strong>sur devis</strong></div>
+      <div class="extra-item">Audit réseaux sociaux<strong>80€</strong></div>
+    </div>
+  </div>
+</section>
+
+<!-- POURQUOI MOI -->
+<section id="pourquoi" class="fade-up">
+  <div class="section-label">Pourquoi me choisir ?</div>
+  <h2 class="section-title">Votre visibilité, ma priorité.</h2>
+  <div class="why-grid">
+    <div class="why-text">
+      <p>Vous êtes expert·e dans votre domaine — <strong>la communication ne devrait pas vous freiner.</strong> Je prends en charge votre présence digitale pour que vous puissiez vous concentrer sur ce que vous faites de mieux.</p>
+      <p>Basée en <strong>région PACA</strong>, je me déplace directement chez vous pour mieux comprendre votre activité et produire un contenu qui reflète vraiment votre image.</p>
+      <a href="#contact" class="btn-primary" style="display:inline-flex;margin-top:0.5rem">Discutons de votre projet →</a>
+    </div>
+    <div class="why-cards">
+      <div class="why-card">
+        <div class="why-ico" style="background:var(--pink-light)">🎨</div>
+        <div>
+          <h4>Contenu 100% personnalisé</h4>
+          <p>Aucun template générique. Chaque post, chaque visuel est créé spécifiquement pour votre marque.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-ico" style="background:var(--sage-light)">📍</div>
+        <div>
+          <h4>Présence terrain en PACA</h4>
+          <p>Je me déplace sur site pour capturer l'ambiance réelle de votre activité selon la formule choisie.</p>
+        </div>
+      </div>
+      <div class="why-card">
+        <div class="why-ico" style="background:var(--navy-light)">📊</div>
+        <div>
+          <h4>Suivi & transparence</h4>
+          <p>Rapports réguliers, disponibilité et communication fluide tout au long de notre collaboration.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="fade-up">
+  <div class="section-label">Contact</div>
+  <h2 class="section-title">Prêt·e à donner de la<br>visibilité à votre entreprise ?</h2>
+  <p class="contact-sub">Un projet, une question, une envie de collaborer ? N'hésitez pas — je réponds rapidement et avec plaisir !</p>
+  <a href="mailto:daphnerolland.pro@outlook.com" class="btn-contact">✉️ M'envoyer un message</a>
+  <div class="contact-info">
+    <a href="tel:+33789580991" class="c-link"><span>📞</span>+33 7 89 58 09 91</a>
+    <a href="mailto:daphnerolland.pro@outlook.com" class="c-link"><span>📧</span>daphnerolland.pro@outlook.com</a>
+    <span class="c-link"><span>📍</span>Région PACA</span>
+  </div>
+</section>
+
+<footer>
+  <p><strong>Daphné Rolland</strong> · Community Manager · Région PACA · © 2025</p>
+</footer>
+
+<script>
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
